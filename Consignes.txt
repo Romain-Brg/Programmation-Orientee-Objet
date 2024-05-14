@@ -1,0 +1,94 @@
+Programmation Orientée Objet en C++
+
+	Nous voulons écrire un programme C++ permettant de modéliser les personnages d’un jeu vidéo. Dans
+notre jeu, nous aurons des personnages simples, des guerriers et des sorciers qui évoluent dans un
+monde en deux dimensions. Vous implémenterez les éléments nécessaires pour chaque question dans
+les fichiers header (« .h ») et les fichiers source (« .cpp ») appropriés.
+	I. Les humains
+Dans notre jeu les personnages sont tous des humains. Un Humain est caractérisé par :
+• Son nom.
+• Son nombre de points de vie maximum (pvMax).
+• Son nombre de points de vie actuel (pv).
+• Son niveau (level).
+• Son sexe (sexe). (« homme » ou « femme »)
+• Sa localisation sous forme de coordonnées en x et en y.
+Le nombre de points de vie maximum dépend du niveau du personnage : pvMax=500+level ×200.
+
+1. Définir la classe Humain avec les données membres (les attributs) protégées ci-dessus.
+
+2. Déclarer et définir un constructeur prenant en paramètre le nom et éventuellement le sexe, le
+niveau du personnage et ses coordonnées. Ce constructeur doit initialiser tous les attributs de
+l’objet créé selon les règles suivantes :
+	• Si le sexe n’est pas précisé, il s’agira d’un homme.
+	• Si le niveau n’est pas spécifié il sera égal à 1.
+	• Le nombre de points de vie sera égal au nombre de points de vie maximum.
+	• Si sa position n’est pas précisée il sera localisé aux coordonnées (0,0).
+
+3. Un humain pourra parler. Définir une méthode parle(texte) qui affiche :
+(nom de l’humain) -– texte
+
+4. Un humain pourra également se présenter. Définir la méthode sePresente() qui affiche :
+(nom de l’humain) -– Bonjour ! je suis (nom). Je suis un/une
+humain/humaine de niveau (niveau).
+L’affichage devra prendre en compte le sexe du personnage.
+
+5. Définir une méthode getNom() qui retourne le nom du personnage.
+
+6. Compléter le main.cpp afin d’avoir à l’écran l’affichage suivant :
+Une histoire sur Asta
+(Asta) -- Bonjour, je suis Asta. Je suis un humain de niveau 1.
+(Asta) -- Je suis un voyageur qui cherche refuge.
+Une histoire sur Uther l’ancien
+(Uther l’ancien) -- Bonjour, je suis Uther l’ancien. Je suis un humain
+de niveau 99.
+(Uther l’ancien) -- Je vous souhaite la bienvenue dans mon village.
+	
+	II. Les combats
+1. Un Humain peut attaquer un autre humain. Les dégâts qu’il inflige dépendent de son niveau et de
+celui qu’il attaque : Si un humain A attaque un humain B, l’humain B perdra 15+abs(niveau de A –
+niveau de B)×2 points de vie. Définir la méthode Attaquer de la classe Humain, avec comme
+paramètre d’adresse de l’humain qui est attaqué. 
+Cette méthode devra également afficher le
+message (Si A attaque B) :
+******* (nom de A) attaque (nom de B) et lui inflige (dégâts infligés)
+points de dégât *****
+
+Si l’humain attaqué est déjà mort (son nombre de point de vie est égal à 0), le message suivant devra
+être affiché :
+(nom de A) -- Je ne peux pas l’attaquer, il est déjà mort !
+
+Si un humain achève un autre humain (l’humain attaqué perd tous ses points de vie), il gagne un
+niveau (pvMax doit se mettre à jour en conséquence) et son niveau de points de vie est réinitialiser
+à son niveau maximum (pvMax).
+
+Le message suivant s’affiche :
+(nom de B) – Argh… Je meurs !
+
+	III. Les guerriers et les sorciers
+Les guerriers et les sorciers sont des humains ils ont donc les mêmes données membres que les
+humains. Tout comme les humains, ils peuvent parler et se présenter. Il y a cependant quelques
+différences :
+
+2. Définir les classes Guerrier et Sorcier sachant qu’un sorcier est aussi caractérisé par : un nombre
+de points de mana maximum (pmMax) et un nombre de points de mana (pm) qu’il possède à un
+instant donné.
+
+3. Définir un constructeur pour chacune des classes, seul le nom du personnage doit être
+obligatoirement spécifié sachant que :
+• Un guerrier a 20% de points de vie supplémentaire qu’un simple humain.
+• Pour un sorcier : PmMax=200+level×50 et Pm est initialisé à PmMax.
+
+4. Masquer la méthode sePresente() pour chacune des classes de sorte que :
+Un guerrier se présente de cette façon :
+(nom du guerrier) -- Bonjour, je suis (nom du guerrier). Je suis un/une
+humain/humaine de niveau (niveau du guerrier).
+(nom du guerrier) – Je suis un/une guerrier/guerrière
+Et qu’un sorcier se présente de cette façon :
+(nom du sorcier) -- Bonjour, je suis (nom du sorcier). Je suis un/une
+humain/humaine de niveau (niveau du sorcier).
+(nom du sorcier) – je suis une sorcier/sorcière.
+
+5. Un Guerrier peut aussi attaquer un autre humain. Les dégâts qu’il inflige dépendent de son niveau
+et de celui qu’il attaque : Si un guerrier A attaque un humain B, l’humain B perdra 100+abs(niveau de
+A – niveau de B)×5 points de vie. Masquer la méthode attaquer héritée de la classe Humain. Cette
+méthode fonctionnera de la même façon qu’entre deux humains exceptés pour les pv.

@@ -1,0 +1,6 @@
+﻿  Humain.cpp
+D:\Estaca\CoursEstaca\2A\Algo\TP4\Humain.cpp(60,13): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
+  main.cpp
+  Sorcier.cpp
+  Génération de code en cours...
+  TP4.vcxproj -> D:\Estaca\CoursEstaca\2A\Algo\TP4\x64\Debug\TP4.exe
